@@ -1,5 +1,8 @@
 language: ruby
 
+rvm:
+  - 2.0.0
+
 cache: bundler
 
 addons:
@@ -9,5 +12,6 @@ before_script:
   - psql -c 'create database saver_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 
-rvm:
-  - 2.0.0
+script:
+  - ./bin/rake db:test:prepare
+  - ./bin/rspec
