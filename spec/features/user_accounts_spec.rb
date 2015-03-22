@@ -15,7 +15,7 @@ feature "UserAccounts", :type => :feature do
 
       click_button "Log in"
 
-      expect(page).to have_content "Signed in successfully."
+      expect(page).to have_content "You have logged in successfully."
     end
   end
 
@@ -34,7 +34,7 @@ feature "UserAccounts", :type => :feature do
         click_button "Register"
       }.to change { User.count }.by 1
 
-      expect(page).to have_content "Welcome! You have signed up successfully."
+      expect(page).to have_content "Welcome! You have registered successfully."
     end
   end
 
@@ -49,7 +49,7 @@ feature "UserAccounts", :type => :feature do
 
       click_on "Logout"
 
-      expect(page).to have_content "Signed out successfully."
+      expect(page).to have_content "You have logged out successfully."
     end
   end
 end
