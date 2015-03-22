@@ -43,6 +43,10 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem "annotate"
+end
+
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
   gem "factory_girl_rails"
