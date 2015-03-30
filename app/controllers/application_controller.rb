@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    user = super
-    return user.extend(Auth::AuthenticatedUser) unless user.nil?
-    Auth::Visitor.new
+    @current_auth_user ||= Auth::maybe_user(super)
   end
 end
