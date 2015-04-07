@@ -33,12 +33,11 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.include Warden::Test::Helpers
-  config.before :suite do
-    Warden.test_mode!
-  end
-  config.after :each do
-    Warden.test_reset!
-  end
+  config.before :suite do Warden.test_mode!  end
+  config.after  :each  do Warden.test_reset! end
+
+  config.include Devise::TestHelpers, type: :controller
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
