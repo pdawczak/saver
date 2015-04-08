@@ -19,4 +19,9 @@ class Page < ActiveRecord::Base
   validates :url, presence:   true,
                   format:     { with: URI.regexp },
                   uniqueness: { scope: :user }
+
+  scope :recent, -> (limit = nil) do 
+     order("created_at DESC")
+       .limit(limit)
+  end
 end

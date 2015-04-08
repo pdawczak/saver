@@ -75,4 +75,20 @@ RSpec.describe Page, :type => :model do
       it     { is_expected.to be_invalid }
     end
   end
+
+  describe ".recent" do
+    before do
+      @feb_page = create(:page_with_user, created_at: DateTime.parse("2015-02-01")) 
+      @jan_page = create(:page_with_user, created_at: DateTime.parse("2015-01-01")) 
+      @mar_page = create(:page_with_user, created_at: DateTime.parse("2015-03-01")) 
+    end
+     
+    it "returns pages in DESC order" do
+      expect(Page.recent).to eq [@mar_page, @feb_page, @jan_page]
+    end
+
+    it "returns limited amount of pages" do
+      expect(Page.recent(1)).to eq [@mar_page]
+    end
+  end
 end
