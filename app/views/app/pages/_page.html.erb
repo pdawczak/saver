@@ -1,0 +1,6 @@
+<%= div_for page do %>
+  <%= link_to page.title, page.url %>
+  <% unless page.description.empty? %>
+    <small><%= page.description %></small>
+  <% end %>
+<% end %>
