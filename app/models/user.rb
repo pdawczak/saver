@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :pages
+
+  def recent_pages(limit = nil)
+    pages.recent(limit)
+  end
 end
