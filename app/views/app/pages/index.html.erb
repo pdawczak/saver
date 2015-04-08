@@ -1,0 +1,26 @@
+<div id="new-page">
+  <%= form_for [:app, @page] do |f| %>
+    <div>
+      <%= f.label :url, "URL" %>
+      <%= f.text_field :url %>
+    </div>
+
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div>
+      <%= f.submit "Add Page" %>
+    </div>
+  <% end %>
+</div>
+
+<div id="pages-list">
+  <%= render @pages %>
+</div>

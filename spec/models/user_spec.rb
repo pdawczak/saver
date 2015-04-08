@@ -20,7 +20,18 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
+  subject    { user }
 
   it { is_expected.to respond_to :email }
+  it { is_expected.to respond_to :pages }
+
+  describe ".recent_pages" do
+    it "returns pages in DESC order" do
+      feb_page = user.pages.create(attributes_for(:page, created_at: DateTime.parse("2015-02-01")))
+      jan_page = user.pages.create(attributes_for(:page, created_at: DateTime.parse("2015-01-01")))
+
+      expect(user.recent_pages).to eq [feb_page, jan_page]
+    end
+  end
 end
